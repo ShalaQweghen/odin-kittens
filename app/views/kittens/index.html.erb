@@ -1,0 +1,17 @@
+<% if @kittens.empty? %>
+	<h1>There are no kittens registered yet</h1>
+<% else %>
+	<h1>Kittens</h1>
+	<ol>
+		<% @kittens.each do |kitten| %>
+			<li><%= link_to kitten.name, kitten_path(kitten) %></li>
+				<ul>
+					<li>Age: <%= kitten.age %></li>
+					<li>Cuteness: <%= kitten.cuteness %></li>
+					<li>Softness: <%= kitten.softness %></li>
+				</ul>
+			<%= link_to "Edit", edit_kitten_path(kitten) %> <%= link_to "Delete", kitten_path(kitten), method: :delete %>
+		<% end %>
+	</ol>
+<% end %>
+<%= link_to "Register a kitten", new_kitten_path %>
